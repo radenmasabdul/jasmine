@@ -1,0 +1,74 @@
+//create user
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name": "Dio Puja Raya",
+    "email" : "diopujaraya@gmail.com",
+    "password" : "dio123",
+    "confpassword" : "dio123",
+    "role" : "branchUser"
+}
+
+###
+//get all user
+GET http://localhost:5000/users
+
+###
+//get single user
+GET http://localhost:5000/users/9469cec5-7ea8-44a0-ba33-af929ae2df0b
+
+###
+//update user
+PATCH http://localhost:5000/users/9469cec5-7ea8-44a0-ba33-af929ae2df0b
+Content-Type: application/json
+
+{
+    "name": "Dio Puja Raya Updated",
+    "email" : "diopujaraya@gmail.com",
+    "password" : "",
+    "confpassword" : "",
+    "role" : "branchUser"
+}
+
+###
+//delete user
+DELETE http://localhost:5000/users/9469cec5-7ea8-44a0-ba33-af929ae2df0b
+
+###
+//login user admin
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email" : "abdul.tamsis@gmail.com",
+    "password" : "admin123"
+}
+
+###
+//login user hq
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email" : "vickyhimawan5@gmail.com",
+    "password" : "vicky123"
+}
+
+###
+//login branch user
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email" : "diopujaraya@gmail.com",
+    "password" : "dio123"
+}
+
+###
+//login Me
+GET http://localhost:5000/loginme
+
+###
+//logout
+DELETE http://localhost:5000/logout
