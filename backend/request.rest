@@ -72,3 +72,35 @@ GET http://localhost:5000/loginme
 ###
 //logout
 DELETE http://localhost:5000/logout
+
+###
+//get all laporan
+GET http://localhost:5000/laporan
+
+###
+//get single laporan
+GET http://localhost:5000/laporan/f974f739-5fa1-4fb7-b0bd-221f7616997d
+
+###
+//create laporan
+POST http://localhost:5000/laporan
+Content-Type: application/json
+
+{
+    "name" : "Produk 13",
+    "price" : "400000"
+}
+
+###
+//update laporan
+PATCH  http://localhost:5000/laporan/0b434b06-c13d-4b64-bc6b-5022f1993498
+Content-Type: application/json
+
+{
+    "name" : "Produk 12 Update",
+    "price" : "700000"
+}
+
+###
+//hapus laporan
+DELETE http://localhost:5000/laporan/14207c8f-44b5-4d2c-b6ca-4c605725157f
