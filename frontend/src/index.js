@@ -5,6 +5,10 @@ import { store } from './app/store';
 import App from './App';
 import "./styles/index.css";
 
+import axios from "axios"
+
+axios.defaults.withCredentials = true;
+
 const container = document.getElementById('root');
 const root = createRoot(container);
 
