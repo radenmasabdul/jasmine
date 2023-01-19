@@ -1,7 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { LogOut, reset } from "../features/AuthSlice";
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
+
+  const logout = () => {
+    dispatch(LogOut());
+    dispatch(reset());
+    navigate("/");
+  };
+
   return (
     <>
       <div className="flex">
@@ -214,7 +226,9 @@ const Sidebar = () => {
                         d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
                       />
                     </svg>
-                    <span className="text-gray-100">Logout</span>
+                    <span onClick={logout} className="text-gray-100">
+                      Logout
+                    </span>
                   </Link>
                 </li>
               </ul>
