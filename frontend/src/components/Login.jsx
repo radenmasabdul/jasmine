@@ -3,22 +3,39 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LoginUser, reset } from "../features/AuthSlice";
 
+import Swal from "sweetalert2";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, isError, isSuccess, isLoading, message } = useSelector(
+  const { user, isError, isSuccess, isLoading } = useSelector(
     (state) => state.auth
   );
 
   useEffect(() => {
+    if (user || isError) {
+      Swal.fire({
+        icon: "error",
+        title: "There is a mistake!",
+        text: "Please fill in the data correctly!",
+        showConfirmButton: true,
+      });
+    }
     if (user || isSuccess) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Login Success",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       navigate("/dashboard");
     }
     dispatch(reset());
-  }, [user, isSuccess, dispatch, navigate]);
+  }, [user, isSuccess, dispatch, navigate, isError]);
 
   const Auth = (e) => {
     e.preventDefault();
@@ -42,7 +59,6 @@ const Login = () => {
                 login your account
               </h1>
               <form onSubmit={Auth}>
-                {isError && <p className="text-center">{message}</p>}
                 <div className="mb-6">
                   <input
                     type="text"
