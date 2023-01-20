@@ -24,11 +24,10 @@ const AddUser = () => {
     }
     if (user && user.role !== "admin") {
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
-        footer: '<a href="">Why do I have this issue?</a>'
-      })
+        icon: "error",
+        title: "Oops...",
+        text: "Anda tidak bisa mengakses halaman ini!",
+      });
       navigate("/dashboard");
     }
   }, [isError, user, navigate]);
