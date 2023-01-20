@@ -3,12 +3,21 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { LogOut, reset } from "../features/AuthSlice";
 
+import Swal from "sweetalert2";
+
 const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
 
   const logout = () => {
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Logout Success",
+      showConfirmButton: false,
+      timer: 1500,
+    });
     dispatch(LogOut());
     dispatch(reset());
     navigate("/");
