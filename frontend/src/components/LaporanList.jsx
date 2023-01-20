@@ -22,7 +22,7 @@ const LaporanList = () => {
   return (
     <>
       <div className="container mx-auto mt-12">
-        <Link to="/laporan/add" className="btn btn-success my-2">
+        <Link to="/laporan/add" className="btn btn-success my-2 text-white">
           {" "}
           Add New
         </Link>
@@ -47,14 +47,14 @@ const LaporanList = () => {
                   <td className="flex flex-wrap gap-2 justify-center">
                     <Link
                       to={`/laporan/edit/${laporan.uuid}`}
-                      className="btn btn-info"
+                      className="btn btn-info text-white"
                     >
                       {" "}
                       Edit{" "}
                     </Link>
                     <button
                       onClick={() => deleteLaporan(laporan.uuid)}
-                      className="btn btn-error"
+                      className="btn btn-error text-white"
                     >
                       {" "}
                       Delete{" "}
