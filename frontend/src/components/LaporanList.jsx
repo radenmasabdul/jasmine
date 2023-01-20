@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const LaporanList = () => {
   const [laporan, setLaporan] = useState([]);
@@ -15,8 +16,33 @@ const LaporanList = () => {
   };
 
   const deleteLaporan = async (laporanId) => {
-    await axios.delete(`http://localhost:5000/laporan/${laporanId}`);
-    getLaporan();
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:5000/laporan/${laporanId}`)
+          .then((res) => {
+            Swal.fire({
+              title: "Successfully",
+              text: "Your file has been deleted.",
+              icon: "success",
+              showCancelButton: false,
+              confirmButtonColor: "#3085d6",
+              confirmButtonText: "Ok",
+            });
+            getLaporan();
+          });
+      } else {
+        return;
+      }
+    });
   };
 
   return (
