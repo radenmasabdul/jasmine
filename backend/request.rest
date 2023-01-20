@@ -6,7 +6,7 @@ Content-Type: application/json
     "name": "Dio Puja Raya",
     "email" : "diopujaraya@gmail.com",
     "password" : "dio123",
-    "confpassword" : "dio123",
+    "confPassword" : "dio123",
     "role" : "branchUser"
 }
 
@@ -27,7 +27,7 @@ Content-Type: application/json
     "name": "Dio Puja Raya Updated",
     "email" : "diopujaraya@gmail.com",
     "password" : "",
-    "confpassword" : "",
+    "confPassword" : "",
     "role" : "branchUser"
 }
 
