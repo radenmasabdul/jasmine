@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const FormAddUser = () => {
   const [name, setName] = useState("");
@@ -21,6 +22,13 @@ const FormAddUser = () => {
         password: password,
         confPassword: confPassword,
         role: role,
+      });
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 1500,
       });
       navigate("/users");
     } catch (error) {
