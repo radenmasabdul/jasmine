@@ -182,7 +182,7 @@ const Sidebar = () => {
                 </li>
                 <li className="rounded-sm">
                   <Link
-                    to="/settings"
+                    to="/setting"
                     className="flex items-center p-2 space-x-3 rounded-md"
                   >
                     <svg
