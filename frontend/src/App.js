@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import Login from "./components/Login";
+import Logout from "./components/Logout";
 import Dashboard from "./pages/Dashboard"
 import Users from "./pages/Users";
 import Laporan from "./pages/Laporan";
@@ -14,6 +15,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="/logout" element={<Logout />} />
           <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/users" element={<Users />} />
