@@ -7,7 +7,7 @@ const FormAddUser = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confPassword, setConfPassword] = useState("");
-  const [role, setRole] = useState("Admin");
+  const [role, setRole] = useState("");
   const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
@@ -120,7 +120,7 @@ const FormAddUser = () => {
               id="role"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
-              <option disabled value="role" className="capitalize my-4">
+              <option disabled value="role" className="my-4 capitalize">
                 select role
               </option>
               <option value="admin">Admin</option>

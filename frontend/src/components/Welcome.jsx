@@ -1,9 +1,15 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const Welcome = () => {
+  const { user } = useSelector((state) => state.auth);
+
   return (
     <>
       <div className="container mx-auto mt-12">
+        <p className="capitalize text-base mb-4">
+          Welcome back, {user && user.role}!
+        </p>
         <div className="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-3">
           <div className="w-full px-4 py-5 bg-white rounded-lg shadow">
             <div className="text-sm font-medium text-gray-500 truncate">
