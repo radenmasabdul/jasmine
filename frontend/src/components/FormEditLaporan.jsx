@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams, Link } from "react-router-dom";
 
+import Swal from "sweetalert2";
+
 const FormEditLaporan = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -27,17 +29,26 @@ const FormEditLaporan = () => {
 
   const updateLaporan = async (e) => {
     e.preventDefault();
-    try {
-      await axios.patch(`http://localhost:5000/laporan/${id}`, {
-        name: name,
-        price: price,
-      });
-      navigate("/laporan");
-    } catch (error) {
-      if (error.response) {
-        setMessage(error.response.data.message);
+
+    Swal.fire({
+      title: "Do you want to save the changes?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Save",
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.patch(`http://localhost:5000/laporan/${id}`, {
+          name: name,
+          price: price,
+        });
+        Swal.fire("Saved!", "", "success");
+        navigate("/laporan");
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+        navigate("/laporan");
       }
-    }
+    });
   };
 
   return (
