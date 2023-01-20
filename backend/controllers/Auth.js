@@ -32,7 +32,7 @@ export const LoginMe = async (req, res) => {
     res.status(200).json(user);
 }
 
-export const Logout = async (req, res) => {
+export const Logout = (req, res) => {
     req.session.destroy((err) => {
         if (err) return res.status(400).json({ msg: "Tidak Dapat Logout" });
         res.status(200).json({ msg: "Anda Berhasil Logout" });
