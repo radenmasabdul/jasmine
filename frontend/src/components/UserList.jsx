@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
@@ -15,8 +16,31 @@ const UserList = () => {
   };
 
   const deleteUser = async (userId) => {
-    await axios.delete(`http://localhost:5000/users/${userId}`);
-    getUsers();
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`http://localhost:5000/users/${userId}`).then((res) => {
+          Swal.fire({
+            title: "Successfully",
+            text: "Your file has been deleted.",
+            icon: "success",
+            showCancelButton: false,
+            confirmButtonColor: "#3085d6",
+            confirmButtonText: "Ok",
+          });
+          getUsers();
+        });
+      } else {
+        return;
+      }
+    });
   };
 
   return (
