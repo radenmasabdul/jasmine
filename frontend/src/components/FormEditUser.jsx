@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams, Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const FormEditUser = () => {
   const [name, setName] = useState("");
@@ -31,20 +32,29 @@ const FormEditUser = () => {
 
   const updateUser = async (e) => {
     e.preventDefault();
-    try {
-      await axios.patch(`http://localhost:5000/users/${id}`, {
-        name: name,
-        email: email,
-        password: password,
-        confPassword: confPassword,
-        role: role,
-      });
-      navigate("/users");
-    } catch (error) {
-      if (error.response) {
-        setMessage(error.response.data.message);
+
+    Swal.fire({
+      title: "Do you want to save the changes?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Save",
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.patch(`http://localhost:5000/users/${id}`, {
+          name: name,
+          email: email,
+          password: password,
+          confPassword: confPassword,
+          role: role,
+        });
+        Swal.fire("Saved!", "", "success");
+        navigate("/users");
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+        navigate("/users");
       }
-    }
+    });
   };
 
   return (
@@ -150,7 +160,7 @@ const FormEditUser = () => {
                 Update
               </button>
               <Link
-                to="/laporan"
+                to="/users"
                 className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 {" "}
