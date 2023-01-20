@@ -4,13 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getMe } from "../features/AuthSlice";
 
+import Swal from "sweetalert2";
+
 import Layout from "./Layout";
 import FormAddLaporan from "../components/FormAddLaporan";
 
 const AddLaporan = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isError } = useSelector((state) => state.auth);
+  const { isError, user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(getMe());
@@ -20,7 +22,15 @@ const AddLaporan = () => {
     if (isError) {
       navigate("/");
     }
-  }, [isError, navigate]);
+    if (user && user.role !== "admin" && user.role !== "userHQ") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Anda tidak bisa mengakses halaman ini!",
+      });
+      navigate("/dashboard");
+    }
+  }, [isError, user, navigate]);
 
   return (
     <Layout>
