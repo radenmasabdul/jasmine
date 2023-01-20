@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const FormAddLaporan = () => {
   const [name, setName] = useState("");
@@ -15,6 +16,13 @@ const FormAddLaporan = () => {
       await axios.post("http://localhost:5000/laporan", {
         name: name,
         price: price,
+      });
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 1500,
       });
       navigate("/laporan");
     } catch (error) {
