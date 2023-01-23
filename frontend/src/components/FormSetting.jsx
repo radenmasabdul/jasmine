@@ -18,7 +18,7 @@ const FormSetting = () => {
         >
           <span className="ml-2">
             <FaSun
-              className={`text-white text-4xl ${isLight ? "" : "hidden"}`}
+              className={`text-gray-800 text-4xl ${isLight ? "" : "hidden"}`}
             />
             <FaMoon
               className={`text-white text-4xl ${isLight ? "hidden" : ""}`}
