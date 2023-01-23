@@ -1,4 +1,6 @@
+import React, { useState, useMemo, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { ThemeContext } from "./features/context";
 
 import Login from "./components/Login";
 import Logout from "./components/Logout";
@@ -16,8 +18,20 @@ import EditUser from "./pages/EditUser"
 import Setting from "./pages/Setting";
 
 function App() {
+
+  const [isLight, setIsLight] = useState(true);
+  const theme = useMemo(() => ({ isLight, setIsLight }), [isLight]);
+
+  useEffect(() => {
+    if (isLight) {
+      document.documentElement.classList.remove("dark");
+    } else {
+      document.documentElement.classList.add("dark");
+    }
+  }, [isLight]);
+
   return (
-    <>
+    <ThemeContext.Provider value={theme}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -36,7 +50,7 @@ function App() {
           <Route path="/setting" element={<Setting />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </ThemeContext.Provider>
   );
 }
 

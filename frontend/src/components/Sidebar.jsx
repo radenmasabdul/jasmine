@@ -26,7 +26,7 @@ const Sidebar = () => {
   return (
     <>
       <div className="flex">
-        <div className="flex flex-col h-screen p-3 bg-blue-800 shadow w-60">
+        <div className="flex flex-col h-screen p-3 bg-blue-800 shadow w-60 dark:bg-slate-800">
           <div className="space-y-3">
             <div className="flex items-center">
               <h2 className="text-xl font-bold text-white my-4 invisible">

@@ -1,34 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "../features/context";
+import { FaSun } from "react-icons/fa";
+import { FaMoon } from "react-icons/fa";
 
 const FormSetting = () => {
+  const { isLight, setIsLight } = useContext(ThemeContext);
+
   return (
     <>
       <div className="container mx-auto mt-12">
-        <p>Ini Page Settings</p>
-        <div className="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-3">
-          <div className="w-full px-4 py-5 bg-white rounded-lg shadow">
-            <div className="text-sm font-medium text-gray-500 truncate">
-              Total users
-            </div>
-            <div className="mt-1 text-3xl font-semibold text-gray-900">
-              12,00
-            </div>
-          </div>
-          <div className="w-full px-4 py-5 bg-white rounded-lg shadow">
-            <div className="text-sm font-medium text-gray-500 truncate">
-              Total Profit
-            </div>
-            <div className="mt-1 text-3xl font-semibold text-gray-900">
-              $ 450k
-            </div>
-          </div>
-          <div className="w-full px-4 py-5 bg-white rounded-lg shadow">
-            <div className="text-sm font-medium text-gray-500 truncate">
-              Total Orders
-            </div>
-            <div className="mt-1 text-3xl font-semibold text-gray-900">20k</div>
-          </div>
-        </div>
+        <p className="text-black text-base dark:text-white">Change Theme</p>
+        <button
+          className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+          onClick={() => setIsLight(!isLight)}
+        >
+          <span className="ml-2">
+            <FaSun
+              className={`text-white text-4xl ${isLight ? "" : "hidden"}`}
+            />
+            <FaMoon
+              className={`text-white text-4xl ${isLight ? "hidden" : ""}`}
+            />
+          </span>
+        </button>
       </div>
     </>
   );
