@@ -9,7 +9,9 @@ const FormSetting = () => {
   return (
     <>
       <div className="container mx-auto mt-12">
-        <p className="text-black text-base dark:text-white">Change Theme</p>
+        <p className="text-black text-base my-2 dark:text-white">
+          Change Theme
+        </p>
         <button
           className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
           onClick={() => setIsLight(!isLight)}

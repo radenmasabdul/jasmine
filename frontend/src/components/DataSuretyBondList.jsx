@@ -4,7 +4,9 @@ const DataSuretyBondList = () => {
   return (
     <>
       <div className="container mx-auto mt-12">
-        <p>Ini Page Data Surety Bond</p>
+        <p className="capitalize text-base mb-4 text-black dark:text-white">
+          Ini Page Data Surety Bond
+        </p>
         <div className="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-3">
           <div className="w-full px-4 py-5 bg-white rounded-lg shadow">
             <div className="text-sm font-medium text-gray-500 truncate">

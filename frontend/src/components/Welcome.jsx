@@ -7,7 +7,7 @@ const Welcome = () => {
   return (
     <>
       <div className="container mx-auto mt-12">
-        <p className="capitalize text-base mb-4">
+        <p className="capitalize text-base mb-4 text-black dark:text-white">
           Welcome back, {user && user.role}!
         </p>
         <div className="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-3">

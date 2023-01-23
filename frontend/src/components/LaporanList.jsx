@@ -48,6 +48,9 @@ const LaporanList = () => {
   return (
     <>
       <div className="container mx-auto mt-12">
+        <p className="capitalize text-base text-black dark:text-white">
+          Laporan
+        </p>
         <Link to="/laporan/add" className="btn btn-success my-2 text-white">
           {" "}
           Add New

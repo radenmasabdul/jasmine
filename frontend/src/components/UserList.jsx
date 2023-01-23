@@ -46,6 +46,9 @@ const UserList = () => {
   return (
     <>
       <div className="container mt-12">
+        <p className="capitalize text-base text-black dark:text-white">
+          Manajemen User
+        </p>
         <Link to="/users/add" className="btn btn-success my-2 text-white">
           {" "}
           Add New
